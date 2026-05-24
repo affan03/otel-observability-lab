@@ -1,0 +1,27 @@
+server:
+  http_listen_port: 9080
+  grpc_listen_port: 0
+
+positions:
+  filename: /tmp/positions.yaml    # tracks how far through each file it has read
+
+clients:
+  - url: http://loki:3100/loki/api/v1/push   # where to send logs
+
+scrape_configs:
+  - job_name: otel-demo-app
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: otel-demo-app          # label applied to every log line
+          env: development
+          __path__: /logs/combined.log   # the file to tail
+    pipeline_stages:
+      - json:                         # parse each line as JSON
+          expressions:
+            level: level              # extract these fields as labels
+            traceId: traceId
+      - labels:
+          level:                      # make level a Loki label
+          traceId:                    # make traceId a Loki label

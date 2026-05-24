@@ -1,0 +1,8 @@
+global:
+  scrape_interval: 15s      # scrape every 15 seconds
+  evaluation_interval: 15s  # evaluate alert rules every 15 seconds
+
+scrape_configs:
+  - job_name: 'otel-demo-app'
+    static_configs:
+      - targets: ['app:9464']   # 'app' is the Docker service name, not localhost
