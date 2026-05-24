@@ -49,7 +49,16 @@ Built for learning. Every decision is intentional and documented.
 │                      └──────────────────────────┘    │
 └─────────────────────────────────────────────────────┘
 ```
+## Screenshots
 
+### Grafana — RED Dashboard
+![Grafana Dashboard](grafana.png)
+
+### Prometheus — Target Health & PromQL
+![Prometheus](prometheus.png)
+
+### Jaeger — Trace Explorer
+![Jaeger](jaeger.png)
 ---
 
 ## The App
